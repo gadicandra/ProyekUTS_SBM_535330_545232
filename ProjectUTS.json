@@ -1,0 +1,1289 @@
+[
+    {
+        "id": "7b9ed63e.2138f8",
+        "type": "tab",
+        "label": "Basic_Flow",
+        "disabled": false,
+        "info": "# Basic flow to start with STM32CubeMonitor."
+    },
+    {
+        "id": "bd7807553ae39039",
+        "type": "acquisition out",
+        "z": "7b9ed63e.2138f8",
+        "name": "myProbeOut",
+        "probeconfig": "2203d6a1fb9c362b",
+        "x": 1070,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "0d6d7e91c7010ceb",
+        "type": "acquisition in",
+        "z": "7b9ed63e.2138f8",
+        "name": "myProbeIn",
+        "probeconfig": "143aa5cbfa9c07c2",
+        "x": 480,
+        "y": 600,
+        "wires": [
+            [
+                "bb89179204e75f1d"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "bb89179204e75f1d",
+        "type": "processing",
+        "z": "7b9ed63e.2138f8",
+        "groupname": "myVariable",
+        "groupid": "0c9e07eff3eaa8db",
+        "expressions": [],
+        "statistics": [],
+        "logmode": "changes",
+        "logformat": "stcm",
+        "x": 810,
+        "y": 600,
+        "wires": [
+            [
+                "efe02ce0920c1c18"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "0c9e07eff3eaa8db",
+        "type": "variables",
+        "z": "7b9ed63e.2138f8",
+        "groupname": "myVariable",
+        "accesspoint": 0,
+        "execonfig": "ebefe09a099a0c72",
+        "variablelist": [],
+        "triggerstartmode": "manual",
+        "triggername": "adc_val",
+        "triggerthreshold": "",
+        "frequency": "",
+        "frequencyType": "0",
+        "snapshotheader": "",
+        "mode": "direct",
+        "lastImportedTime": 1775507320185,
+        "openStatus": false,
+        "x": 570,
+        "y": 400,
+        "wires": [
+            [
+                "2d61ec03ca9ec845",
+                "bd7807553ae39039"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2d61ec03ca9ec845",
+        "type": "ui_write",
+        "z": "7b9ed63e.2138f8",
+        "group": "f6c6705ce32711a9",
+        "name": "myPanel",
+        "order": 5,
+        "width": "16",
+        "height": "4",
+        "x": 800,
+        "y": 320,
+        "wires": [
+            [
+                "bd7807553ae39039"
+            ]
+        ]
+    },
+    {
+        "id": "0ece473bc2c1ff69",
+        "type": "ui_button",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "f6c6705ce32711a9",
+        "order": 1,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "START acquisition",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "start",
+        "topicType": "str",
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "0c9e07eff3eaa8db"
+            ]
+        ]
+    },
+    {
+        "id": "2f80d0ceda350857",
+        "type": "ui_button",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "f6c6705ce32711a9",
+        "order": 2,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "STOP acquisition",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "stop",
+        "topicType": "str",
+        "x": 330,
+        "y": 480,
+        "wires": [
+            [
+                "0c9e07eff3eaa8db"
+            ]
+        ]
+    },
+    {
+        "id": "9a2d6de95ffc3a22",
+        "type": "ui_button",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "f6c6705ce32711a9",
+        "order": 3,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "Ganti Mode",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"virtual_btn\": 1}",
+        "payloadType": "json",
+        "topic": "write",
+        "topicType": "str",
+        "x": 350,
+        "y": 140,
+        "wires": [
+            [
+                "4e6b910919b298ff"
+            ]
+        ]
+    },
+    {
+        "id": "7f8a3bdd5f56f1ee",
+        "type": "ui_button",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "f6c6705ce32711a9",
+        "order": 4,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "Interrupt",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"virtual_interrupt\": 1}",
+        "payloadType": "json",
+        "topic": "write",
+        "topicType": "str",
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "300a8acf2b3cab61"
+            ]
+        ]
+    },
+    {
+        "id": "4e6b910919b298ff",
+        "type": "function",
+        "z": "7b9ed63e.2138f8",
+        "name": "function 1",
+        "func": "msg.payload = {\n    \"variablelist\": [\n        {\n            \"address\": \"0x20000317\",\n            \"type\": 1,\n            \"value\": \"1\"\n        }\n    ],\n    \"accesspoint\": 0\n}\n\nmsg.topic = \"write\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 140,
+        "wires": [
+            [
+                "bd7807553ae39039"
+            ]
+        ]
+    },
+    {
+        "id": "300a8acf2b3cab61",
+        "type": "function",
+        "z": "7b9ed63e.2138f8",
+        "name": "function 2",
+        "func": "msg.payload = {\n    \"variablelist\": [\n        {\n            \"address\": \"0x20000319\",\n            \"type\": 1,\n            \"value\": \"1\"\n        }\n    ],\n    \"accesspoint\": 0\n}\n\nmsg.topic = \"write\"\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 220,
+        "wires": [
+            [
+                "bd7807553ae39039"
+            ]
+        ]
+    },
+    {
+        "id": "efe02ce0920c1c18",
+        "type": "function",
+        "z": "7b9ed63e.2138f8",
+        "name": "function 3",
+        "func": "let varName = msg.payload.variablename;\nlet dataArray = msg.payload.variabledata;\n\nif (!dataArray || dataArray.length === 0) return null;\n\n// Ekstrak dan paksa konversi nilai terbaru menjadi Angka (Number)\n// Ini akan menyelesaikan masalah Chart, Temperature, dan Humidity yang gagal masuk ke Gauge\nlet latestValue = Number(dataArray[dataArray.length - 1].y);\n\n// 1. Simpan nilai ke flow memory\nflow.set(varName, latestValue);\n\n// 2. Tarik semua data dari flow memory (pastikan default ke 0 dan bertipe Number)\nlet state = Number(flow.get(\"state\")) || 0;\nlet shift_idx = Number(flow.get(\"shift_idx\")) || 0;\nlet adc = Number(flow.get(\"adc_val\")) || 0;\nlet gauge_val = Number(flow.get(\"gauge_val\")) || 0;\nlet temp = Number(flow.get(\"temperature\")) || 0;\nlet hum = Number(flow.get(\"humidity\")) || 0;\n\nlet button_int = Number(flow.get(\"button_interrupted\")) || 0;\nlet virtual_int = Number(flow.get(\"virtual_interrupt\")) || 0;\n\n// Siapkan wadah untuk 13 Output yang dikosongkan (null) di awal\nlet msgList = new Array(13).fill(null);\n\n// --------------------------------------------------------\n// 3. ROUTING DATA WIDGET (Output 1 sampai 5)\n// --------------------------------------------------------\nif (varName === \"gauge_val\") {\n    msgList[0] = { payload: latestValue }; // Output 1: Chart (Hanya Increment)\n    msgList[4] = { payload: latestValue }; // Output 5: Gauge Increment\n} \nelse if (varName === \"adc_val\") {\n    msgList[1] = { payload: latestValue }; // Output 2: Gauge Potensiometer\n} \nelse if (varName === \"humidity\") {\n    msgList[2] = { payload: latestValue }; // Output 3: Gauge Humidity\n} \nelse if (varName === \"temperature\") {\n    msgList[3] = { payload: latestValue }; // Output 4: Gauge Temperature\n}\n\n// --------------------------------------------------------\n// 4. LOGIKA LED BERDASARKAN STATE (Output 6 sampai 13)\n// --------------------------------------------------------\nlet leds = [0, 0, 0, 0, 0, 0, 0, 0];\n\nif (button_int === 1 || virtual_int === 1) {\n    leds = [1, 1, 1, 1, 1, 1, 1, 1]; // Semua LED nyala (Interupsi)\n} else {\n    if (state === 0) {\n        if (shift_idx >= 0 && shift_idx < 8) {\n            leds[shift_idx] = 1;\n        }\n    } \n    else if (state === 1) {\n        let leds_on = 0;\n        if (gauge_val > 24) leds_on = 8;\n        else if (gauge_val > 21) leds_on = 7;\n        else if (gauge_val > 17) leds_on = 6;\n        else if (gauge_val > 14) leds_on = 5;\n        else if (gauge_val > 10) leds_on = 4;\n        else if (gauge_val > 7) leds_on = 3;\n        else if (gauge_val > 3) leds_on = 2;\n        else if (gauge_val > 0) leds_on = 1;\n\n        for (let i = 0; i < leds_on; i++) {\n            leds[i] = 1;\n        }\n    } \n    else if (state === 2) {\n        let leds_on = Math.floor((adc * 8) / 4095);\n        for (let i = 0; i < leds_on; i++) {\n            if (i < 8) leds[i] = 1;\n        }\n    } \n    else if (state === 3) {\n        let temp_mask = 0x00;\n        if (temp > 30.0) temp_mask = 0x0F;\n        else if (temp > 28.0) temp_mask = 0x07;\n        else if (temp > 24.0) temp_mask = 0x03;\n        else if (temp > 22.0) temp_mask = 0x01;\n\n        let hum_mask = 0x00;\n        if (hum > 90.0) hum_mask = 0xF0;\n        else if (hum > 76.0) hum_mask = 0xE0;\n        else if (hum > 74.0) hum_mask = 0xC0;\n        else if (hum > 70.0) hum_mask = 0x80;\n\n        let combined_mask = temp_mask | hum_mask;\n\n        for (let i = 0; i < 8; i++) {\n            if ((combined_mask & (1 << i)) !== 0) {\n                leds[i] = 1;\n            }\n        }\n    }\n}\n\n// 5. Masukkan data LED ke Index Array 5-12 (Output Node 6 sampai 13)\nfor (let i = 0; i < 8; i++) {\n    msgList[i + 5] = { payload: leds[i] };\n}\n\nreturn msgList;",
+        "outputs": 13,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 980,
+        "y": 600,
+        "wires": [
+            [
+                "cc5d20358f43e33a"
+            ],
+            [
+                "0c05a7134a38bd8e"
+            ],
+            [
+                "a36fee7a5509ece8"
+            ],
+            [
+                "5589cb3d0211a511"
+            ],
+            [
+                "6899da9e8d71ed97"
+            ],
+            [
+                "0af881d6842e7322"
+            ],
+            [
+                "44cb36cec025c3b8"
+            ],
+            [
+                "27dbe6786f739c73"
+            ],
+            [
+                "362596b9075c0585"
+            ],
+            [
+                "5ab5a62fb0913acb"
+            ],
+            [
+                "7f004b7c84ebb2b1"
+            ],
+            [
+                "72abfcf08e09d5ad"
+            ],
+            [
+                "ea0f9017296a841e"
+            ]
+        ]
+    },
+    {
+        "id": "cc5d20358f43e33a",
+        "type": "ui_chart",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "7cb7e9f6e0ebc2d4",
+        "order": 1,
+        "width": "16",
+        "height": "4",
+        "label": "Nilai Increment",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1200,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a36fee7a5509ece8",
+        "type": "ui_gauge",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "6c811187e6a70e74",
+        "order": 2,
+        "width": "4",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1180,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "0af881d6842e7322",
+        "type": "ui_led",
+        "z": "7b9ed63e.2138f8",
+        "order": 1,
+        "group": "d0ea814e949bc72d",
+        "width": "2",
+        "height": "1",
+        "label": "LED 1",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED 1",
+        "x": 1170,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "44cb36cec025c3b8",
+        "type": "ui_led",
+        "z": "7b9ed63e.2138f8",
+        "order": 2,
+        "group": "d0ea814e949bc72d",
+        "width": "2",
+        "height": "1",
+        "label": "LED 2",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED 2",
+        "x": 1170,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "27dbe6786f739c73",
+        "type": "ui_led",
+        "z": "7b9ed63e.2138f8",
+        "order": 3,
+        "group": "d0ea814e949bc72d",
+        "width": "2",
+        "height": "1",
+        "label": "LED 3",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED 3",
+        "x": 1170,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "362596b9075c0585",
+        "type": "ui_led",
+        "z": "7b9ed63e.2138f8",
+        "order": 4,
+        "group": "d0ea814e949bc72d",
+        "width": "2",
+        "height": "1",
+        "label": "LED 4",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED 4",
+        "x": 1170,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "5ab5a62fb0913acb",
+        "type": "ui_led",
+        "z": "7b9ed63e.2138f8",
+        "order": 5,
+        "group": "d0ea814e949bc72d",
+        "width": "2",
+        "height": "1",
+        "label": "LED 5",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED 5",
+        "x": 1170,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "7f004b7c84ebb2b1",
+        "type": "ui_led",
+        "z": "7b9ed63e.2138f8",
+        "order": 6,
+        "group": "d0ea814e949bc72d",
+        "width": "2",
+        "height": "1",
+        "label": "LED 6",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED 6",
+        "x": 1170,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "72abfcf08e09d5ad",
+        "type": "ui_led",
+        "z": "7b9ed63e.2138f8",
+        "order": 7,
+        "group": "d0ea814e949bc72d",
+        "width": "2",
+        "height": "1",
+        "label": "LED 7",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED 7",
+        "x": 1170,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "ea0f9017296a841e",
+        "type": "ui_led",
+        "z": "7b9ed63e.2138f8",
+        "order": 8,
+        "group": "d0ea814e949bc72d",
+        "width": "2",
+        "height": "1",
+        "label": "LED 8",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "0",
+                "valueType": "num"
+            },
+            {
+                "color": "#008000",
+                "value": "1",
+                "valueType": "num"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "LED 8",
+        "x": 1170,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "5589cb3d0211a511",
+        "type": "ui_gauge",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "6c811187e6a70e74",
+        "order": 1,
+        "width": "4",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1190,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "0c05a7134a38bd8e",
+        "type": "ui_gauge",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "2396b1262630a20f",
+        "order": 1,
+        "width": "4",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Potensiometer",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "4095",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "2000",
+        "seg2": "3000",
+        "diff": false,
+        "className": "",
+        "x": 1200,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "6899da9e8d71ed97",
+        "type": "ui_gauge",
+        "z": "7b9ed63e.2138f8",
+        "name": "",
+        "group": "2396b1262630a20f",
+        "order": 2,
+        "width": "4",
+        "height": "4",
+        "gtype": "gage",
+        "title": "Nilai Increment",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "77",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1200,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "2203d6a1fb9c362b",
+        "type": "probe",
+        "probeid": "21023402060032524B413836",
+        "probename": "ST-Link v2 21023402060032524B413836",
+        "protocol": "SWD",
+        "frequency": "1.8 MHz - Default",
+        "probeproperty": "{\"SWD\":[\"4.6 MHz\",\"1.8 MHz - Default\",\"950 kHz\",\"400 kHz\",\"150 kHz\"],\"JTAG\":[\"18 MHz\",\"9 MHz\",\"4.5 MHz\",\"2.25 MHz\",\"1.12 MHz - Default\",\"560 kHz\",\"280 kHz\",\"140 kHz\"]}",
+        "probeversion": "ST Link firmware version V2.J46",
+        "connectionType": "p2p",
+        "nickname": "Black ST-Link"
+    },
+    {
+        "id": "143aa5cbfa9c07c2",
+        "type": "probe",
+        "probeid": "21023402060032524B413836",
+        "probename": "ST-Link v2 21023402060032524B413836",
+        "protocol": "SWD",
+        "frequency": "1.8 MHz - Default",
+        "probeproperty": "{\"SWD\":[\"4.6 MHz\",\"1.8 MHz - Default\",\"950 kHz\",\"400 kHz\",\"150 kHz\"],\"JTAG\":[\"18 MHz\",\"9 MHz\",\"4.5 MHz\",\"2.25 MHz\",\"1.12 MHz - Default\",\"560 kHz\",\"280 kHz\",\"140 kHz\"]}",
+        "probeversion": "ST Link firmware version V2.J46",
+        "connectionType": "p2p",
+        "nickname": "Black ST-Link"
+    },
+    {
+        "id": "ebefe09a099a0c72",
+        "type": "exe-config",
+        "name": "myVariables",
+        "exefile": "/home/boerinx/STMProject/KapanSelesaiWoi/Debug/KapanSelesaiWoi.elf",
+        "exefolder": "/home/boerinx/STMProject/KapanSelesaiWoi/Debug",
+        "exevariablelist": [
+            {
+                "address": "0x20000728",
+                "name": "__sbrk_heap_end",
+                "type": 5
+            },
+            {
+                "address": "0x2000030c",
+                "name": "adc_val",
+                "type": 3,
+                "checked": true
+            },
+            {
+                "address": "0x08008f58",
+                "name": "AHBPrescTable[0]",
+                "type": 1
+            },
+            {
+                "address": "0x08008f68",
+                "name": "APBPrescTable[0]",
+                "type": 1
+            },
+            {
+                "address": "0x20000318",
+                "name": "button_interrupted",
+                "type": 1,
+                "checked": true
+            },
+            {
+                "address": "0x080081e4",
+                "name": "Font11x18[0]",
+                "type": 3
+            },
+            {
+                "address": "0x08007a78",
+                "name": "Font7x10[0]",
+                "type": 3
+            },
+            {
+                "address": "0x08008f54",
+                "name": "Font_11x18.char_width",
+                "type": 5
+            },
+            {
+                "address": "0x08008f50",
+                "name": "Font_11x18.data",
+                "type": 5
+            },
+            {
+                "address": "0x08008f4d",
+                "name": "Font_11x18.height",
+                "type": 1
+            },
+            {
+                "address": "0x08008f4c",
+                "name": "Font_11x18.width",
+                "type": 1
+            },
+            {
+                "address": "0x08008f48",
+                "name": "Font_7x10.char_width",
+                "type": 5
+            },
+            {
+                "address": "0x08008f44",
+                "name": "Font_7x10.data",
+                "type": 5
+            },
+            {
+                "address": "0x08008f41",
+                "name": "Font_7x10.height",
+                "type": 1
+            },
+            {
+                "address": "0x08008f40",
+                "name": "Font_7x10.width",
+                "type": 1
+            },
+            {
+                "address": "0x20000308",
+                "name": "gauge_val",
+                "type": 5,
+                "checked": true
+            },
+            {
+                "address": "0x20000258",
+                "name": "hadc1.DMA_Handle",
+                "type": 5
+            },
+            {
+                "address": "0x20000264",
+                "name": "hadc1.ErrorCode",
+                "type": 5
+            },
+            {
+                "address": "0x20000224",
+                "name": "hadc1.Init.ClockPrescaler",
+                "type": 5
+            },
+            {
+                "address": "0x20000238",
+                "name": "hadc1.Init.ContinuousConvMode",
+                "type": 2
+            },
+            {
+                "address": "0x2000022c",
+                "name": "hadc1.Init.DataAlign",
+                "type": 5
+            },
+            {
+                "address": "0x20000240",
+                "name": "hadc1.Init.DiscontinuousConvMode",
+                "type": 2
+            },
+            {
+                "address": "0x20000250",
+                "name": "hadc1.Init.DMAContinuousRequests",
+                "type": 2
+            },
+            {
+                "address": "0x20000234",
+                "name": "hadc1.Init.EOCSelection",
+                "type": 5
+            },
+            {
+                "address": "0x20000248",
+                "name": "hadc1.Init.ExternalTrigConv",
+                "type": 5
+            },
+            {
+                "address": "0x2000024c",
+                "name": "hadc1.Init.ExternalTrigConvEdge",
+                "type": 5
+            },
+            {
+                "address": "0x2000023c",
+                "name": "hadc1.Init.NbrOfConversion",
+                "type": 5
+            },
+            {
+                "address": "0x20000244",
+                "name": "hadc1.Init.NbrOfDiscConversion",
+                "type": 5
+            },
+            {
+                "address": "0x20000228",
+                "name": "hadc1.Init.Resolution",
+                "type": 5
+            },
+            {
+                "address": "0x20000230",
+                "name": "hadc1.Init.ScanConvMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000220",
+                "name": "hadc1.Instance",
+                "type": 5
+            },
+            {
+                "address": "0x2000025c",
+                "name": "hadc1.Lock",
+                "type": 2
+            },
+            {
+                "address": "0x20000254",
+                "name": "hadc1.NbrOfCurrentConversionRank",
+                "type": 5
+            },
+            {
+                "address": "0x20000260",
+                "name": "hadc1.State",
+                "type": 5
+            },
+            {
+                "address": "0x200002ac",
+                "name": "hi2c2.Devaddress",
+                "type": 5
+            },
+            {
+                "address": "0x200002a8",
+                "name": "hi2c2.ErrorCode",
+                "type": 5
+            },
+            {
+                "address": "0x200002b8",
+                "name": "hi2c2.EventCount",
+                "type": 5
+            },
+            {
+                "address": "0x200002a0",
+                "name": "hi2c2.hdmarx",
+                "type": 5
+            },
+            {
+                "address": "0x2000029c",
+                "name": "hi2c2.hdmatx",
+                "type": 5
+            },
+            {
+                "address": "0x20000278",
+                "name": "hi2c2.Init.AddressingMode",
+                "type": 5
+            },
+            {
+                "address": "0x2000026c",
+                "name": "hi2c2.Init.ClockSpeed",
+                "type": 5
+            },
+            {
+                "address": "0x2000027c",
+                "name": "hi2c2.Init.DualAddressMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000270",
+                "name": "hi2c2.Init.DutyCycle",
+                "type": 5
+            },
+            {
+                "address": "0x20000284",
+                "name": "hi2c2.Init.GeneralCallMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000288",
+                "name": "hi2c2.Init.NoStretchMode",
+                "type": 5
+            },
+            {
+                "address": "0x20000274",
+                "name": "hi2c2.Init.OwnAddress1",
+                "type": 5
+            },
+            {
+                "address": "0x20000280",
+                "name": "hi2c2.Init.OwnAddress2",
+                "type": 5
+            },
+            {
+                "address": "0x20000268",
+                "name": "hi2c2.Instance",
+                "type": 5
+            },
+            {
+                "address": "0x200002a4",
+                "name": "hi2c2.Lock",
+                "type": 2
+            },
+            {
+                "address": "0x200002b0",
+                "name": "hi2c2.Memaddress",
+                "type": 5
+            },
+            {
+                "address": "0x200002b4",
+                "name": "hi2c2.MemaddSize",
+                "type": 5
+            },
+            {
+                "address": "0x200002a6",
+                "name": "hi2c2.Mode",
+                "type": 2
+            },
+            {
+                "address": "0x2000028c",
+                "name": "hi2c2.pBuffPtr",
+                "type": 5
+            },
+            {
+                "address": "0x20000298",
+                "name": "hi2c2.PreviousState",
+                "type": 5
+            },
+            {
+                "address": "0x200002a5",
+                "name": "hi2c2.State",
+                "type": 2
+            },
+            {
+                "address": "0x20000292",
+                "name": "hi2c2.XferCount",
+                "type": 3
+            },
+            {
+                "address": "0x20000294",
+                "name": "hi2c2.XferOptions",
+                "type": 5
+            },
+            {
+                "address": "0x20000290",
+                "name": "hi2c2.XferSize",
+                "type": 3
+            },
+            {
+                "address": "0x200002d8",
+                "name": "htim3.Channel",
+                "type": 2
+            },
+            {
+                "address": "0x200002fe",
+                "name": "htim3.ChannelNState[0]",
+                "type": 2
+            },
+            {
+                "address": "0x200002fa",
+                "name": "htim3.ChannelState[0]",
+                "type": 2
+            },
+            {
+                "address": "0x20000302",
+                "name": "htim3.DMABurstState",
+                "type": 2
+            },
+            {
+                "address": "0x200002dc",
+                "name": "htim3.hdma[0]",
+                "type": 5
+            },
+            {
+                "address": "0x200002d4",
+                "name": "htim3.Init.AutoReloadPreload",
+                "type": 5
+            },
+            {
+                "address": "0x200002cc",
+                "name": "htim3.Init.ClockDivision",
+                "type": 5
+            },
+            {
+                "address": "0x200002c4",
+                "name": "htim3.Init.CounterMode",
+                "type": 5
+            },
+            {
+                "address": "0x200002c8",
+                "name": "htim3.Init.Period",
+                "type": 5
+            },
+            {
+                "address": "0x200002c0",
+                "name": "htim3.Init.Prescaler",
+                "type": 5
+            },
+            {
+                "address": "0x200002d0",
+                "name": "htim3.Init.RepetitionCounter",
+                "type": 5
+            },
+            {
+                "address": "0x200002bc",
+                "name": "htim3.Instance",
+                "type": 5
+            },
+            {
+                "address": "0x200002f8",
+                "name": "htim3.Lock",
+                "type": 2
+            },
+            {
+                "address": "0x200002f9",
+                "name": "htim3.State",
+                "type": 2
+            },
+            {
+                "address": "0x20000316",
+                "name": "humidity",
+                "type": 1,
+                "checked": true
+            },
+            {
+                "address": "0x2000031c",
+                "name": "interrupt_start_time",
+                "type": 5
+            },
+            {
+                "address": "0x20000310",
+                "name": "last_shift_time",
+                "type": 5
+            },
+            {
+                "address": "0x20000020",
+                "name": "LED_PIN[0]",
+                "type": 3
+            },
+            {
+                "address": "0x20000000",
+                "name": "LED_PORT[0]",
+                "type": 5
+            },
+            {
+                "address": "0x20000305",
+                "name": "nim_state",
+                "type": 1
+            },
+            {
+                "address": "0x20000314",
+                "name": "shift_idx",
+                "type": 1,
+                "checked": true
+            },
+            {
+                "address": "0x20000720",
+                "name": "SSD1306.CurrentX",
+                "type": 3
+            },
+            {
+                "address": "0x20000722",
+                "name": "SSD1306.CurrentY",
+                "type": 3
+            },
+            {
+                "address": "0x20000725",
+                "name": "SSD1306.DisplayOn",
+                "type": 1
+            },
+            {
+                "address": "0x20000724",
+                "name": "SSD1306.Initialized",
+                "type": 1
+            },
+            {
+                "address": "0x20000320",
+                "name": "SSD1306_Buffer[0]",
+                "type": 1
+            },
+            {
+                "address": "0x20000304",
+                "name": "state",
+                "type": 1,
+                "checked": true
+            },
+            {
+                "address": "0x20000030",
+                "name": "SystemCoreClock",
+                "type": 5
+            },
+            {
+                "address": "0x20000315",
+                "name": "temperature",
+                "type": 1,
+                "checked": true
+            },
+            {
+                "address": "0x2000072c",
+                "name": "uwTick",
+                "type": 5
+            },
+            {
+                "address": "0x20000038",
+                "name": "uwTickFreq",
+                "type": 2
+            },
+            {
+                "address": "0x20000034",
+                "name": "uwTickPrio",
+                "type": 5
+            },
+            {
+                "address": "0x20000317",
+                "name": "virtual_btn",
+                "type": 1,
+                "checked": true
+            },
+            {
+                "address": "0x20000319",
+                "name": "virtual_interrupt",
+                "type": 1,
+                "checked": true
+            }
+        ],
+        "expand": false,
+        "filename": "KapanSelesaiWoi.elf",
+        "exeModifiedTime": 1775506476826,
+        "configLastUpdate": 1775506552618
+    },
+    {
+        "id": "f6c6705ce32711a9",
+        "type": "ui_group",
+        "name": "Control Panel",
+        "tab": "6cce8c29aec2b747",
+        "order": 1,
+        "disp": true,
+        "width": "16",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7cb7e9f6e0ebc2d4",
+        "type": "ui_group",
+        "name": "Graph",
+        "tab": "6cce8c29aec2b747",
+        "order": 5,
+        "disp": true,
+        "width": "16",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6c811187e6a70e74",
+        "type": "ui_group",
+        "name": "Sensor Lingkungan",
+        "tab": "6cce8c29aec2b747",
+        "order": 2,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d0ea814e949bc72d",
+        "type": "ui_group",
+        "name": "Indikator Output",
+        "tab": "6cce8c29aec2b747",
+        "order": 4,
+        "disp": true,
+        "width": "16",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2396b1262630a20f",
+        "type": "ui_group",
+        "name": "Monitoring Sistem",
+        "tab": "6cce8c29aec2b747",
+        "order": 3,
+        "disp": true,
+        "width": "8",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6cce8c29aec2b747",
+        "type": "ui_tab",
+        "name": "Main Monitor",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "fc5eccce335c6d5e",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "@stm32/node-red-contrib-stm32cubemonitor": "2.6.0",
+            "node-red-dashboard": "3.6.6",
+            "node-red-contrib-ui-led": "0.4.11"
+        }
+    }
+]
